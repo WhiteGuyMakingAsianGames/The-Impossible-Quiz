@@ -35,6 +35,9 @@
             font-size: 2em;
             margin: 20px 0;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -47,21 +50,21 @@
 
     <script>
         const questions = [
-            { question: "Find the code: 12345", answer: "12345" },
-            { question: "Find the code: 23456", answer: "23456" },
-            { question: "Find the code: 34567 hidden", answer: "34567" },
-            { question: "Find the code: 45678 somewhere", answer: "45678" },
-            { question: "Find the code: [56789]", answer: "56789" },
-            { question: "Find the code: {67890}", answer: "67890" },
-            { question: "Find the code: 78901 in here", answer: "78901" },
-            { question: "Find the code: 89012 is here", answer: "89012" },
-            { question: "Find the code: 90123 somewhere hidden", answer: "90123" },
-            { question: "Find the code: 01234 is hard to find", answer: "01234" },
-            { question: "Find the code: 12345 somewhere in the text", answer: "12345" },
-            { question: "Find the 8-digit code: 12345678 hidden", answer: "12345678" },
-            { question: "Find the 8-digit code: 23456789 somewhere", answer: "23456789" },
-            { question: "Find the 8-digit code: 34567890 in brackets [34567890]", answer: "34567890" },
-            { question: "Find the 8-digit code: hidden in the text 45678901", answer: "45678901" },
+            { question: "Find the code", answer: "12345", hint: "12345" },
+            { question: "Find the code", answer: "23456", hint: "23<span class='hidden'>456</span>56" },
+            { question: "Find the code", answer: "34567", hint: "3<span class='hidden'>4</span>5<span class='hidden'>67</span>" },
+            { question: "Find the code", answer: "45678", hint: "45<span class='hidden'>678</span>" },
+            { question: "Find the code", answer: "56789", hint: "5<span class='hidden'>6789</span>" },
+            { question: "Find the code", answer: "67890", hint: "<span class='hidden'>67890</span>" },
+            { question: "Find the code", answer: "78901", hint: "<span class='hidden'>7</span>89<span class='hidden'>01</span>" },
+            { question: "Find the code", answer: "89012", hint: "<span class='hidden'>8</span>90<span class='hidden'>12</span>" },
+            { question: "Find the code", answer: "90123", hint: "90123" },
+            { question: "Find the code", answer: "01234", hint: "01234" },
+            { question: "Find the code", answer: "12345", hint: "12<span class='hidden'>345</span>" },
+            { question: "Find the 8-digit code", answer: "12345678", hint: "1234<span class='hidden'>5678</span>" },
+            { question: "Find the 8-digit code", answer: "23456789", hint: "2345<span class='hidden'>6789</span>" },
+            { question: "Find the 8-digit code", answer: "34567890", hint: "<span class='hidden'>34567890</span>" },
+            { question: "Find the 8-digit code", answer: "45678901", hint: "456<span class='hidden'>78901</span>" },
         ];
 
         let currentQuestionIndex = 0;
@@ -74,7 +77,7 @@
 
         function showQuestion() {
             const questionElement = document.getElementById('question');
-            questionElement.textContent = questions[currentQuestionIndex].question;
+            questionElement.innerHTML = questions[currentQuestionIndex].hint;
         }
 
         function checkAnswer() {
