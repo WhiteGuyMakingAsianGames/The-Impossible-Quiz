@@ -18,9 +18,12 @@
             100% { background-color: red; }
         }
         .quiz-container {
-            margin: 20px auto;
-            max-width: 600px;
-            padding: 20px;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             border: 5px solid black;
             background-color: darkred;
         }
@@ -37,6 +40,23 @@
         }
         .hidden {
             display: none;
+        }
+        .zoom {
+            transform: scale(3);
+        }
+        .maze-container {
+            position: relative;
+            width: 80%;
+            height: 400px;
+            background: url('maze.png') no-repeat center;
+            background-size: cover;
+        }
+        .maze-code {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.1em;
         }
     </style>
 </head>
@@ -61,10 +81,10 @@
             { question: "Find the code", answer: "90123", hint: "90123" },
             { question: "Find the code", answer: "01234", hint: "01234" },
             { question: "Find the code", answer: "12345", hint: "12<span class='hidden'>345</span>" },
-            { question: "Find the 8-digit code", answer: "12345678", hint: "1234<span class='hidden'>5678</span>" },
-            { question: "Find the 8-digit code", answer: "23456789", hint: "2345<span class='hidden'>6789</span>" },
-            { question: "Find the 8-digit code", answer: "34567890", hint: "<span class='hidden'>34567890</span>" },
-            { question: "Find the 8-digit code", answer: "45678901", hint: "456<span class='hidden'>78901</span>" },
+            { question: "Find the 8-digit code", answer: "12345678", hint: "<div class='zoom'>1234<span class='hidden'>5678</span></div>" },
+            { question: "Find the 8-digit code", answer: "23456789", hint: "<div class='zoom'>2345<span class='hidden'>6789</span></div>" },
+            { question: "Find the 8-digit code", answer: "34567890", hint: "<div class='maze-container'><div class='maze-code'>34567890</div></div>" },
+            { question: "Find the 8-digit code", answer: "45678901", hint: "<div class='maze-container'><div class='maze-code'>45678901</div></div>" },
         ];
 
         let currentQuestionIndex = 0;
