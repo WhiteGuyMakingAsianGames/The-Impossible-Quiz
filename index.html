@@ -10,6 +10,12 @@
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
+            animation: panic 10s infinite;
+        }
+        @keyframes panic {
+            0% { background-color: red; }
+            50% { background-color: darkred; }
+            100% { background-color: red; }
         }
         .quiz-container {
             margin: 20px auto;
@@ -43,19 +49,19 @@
         const questions = [
             { question: "Find the code: 12345", answer: "12345" },
             { question: "Find the code: 23456", answer: "23456" },
-            { question: "Find the code: hidden in 34567", answer: "34567" },
-            { question: "Find the code: (45678)", answer: "45678" },
+            { question: "Find the code: 34567 hidden", answer: "34567" },
+            { question: "Find the code: 45678 somewhere", answer: "45678" },
             { question: "Find the code: [56789]", answer: "56789" },
             { question: "Find the code: {67890}", answer: "67890" },
-            { question: "Find the code: 78901 somewhere", answer: "78901" },
-            { question: "Find the code: 89012 here", answer: "89012" },
-            { question: "Find the code: 90123 is hidden", answer: "90123" },
-            { question: "Find the code: in 01234", answer: "01234" },
-            { question: "Find the code: this 12345", answer: "12345" },
-            { question: "Find the 8-digit code: 12345678", answer: "12345678" },
-            { question: "Find the 8-digit code: 23456789", answer: "23456789" },
-            { question: "Find the 8-digit code: 34567890", answer: "34567890" },
-            { question: "Find the 8-digit code: 45678901", answer: "45678901" },
+            { question: "Find the code: 78901 in here", answer: "78901" },
+            { question: "Find the code: 89012 is here", answer: "89012" },
+            { question: "Find the code: 90123 somewhere hidden", answer: "90123" },
+            { question: "Find the code: 01234 is hard to find", answer: "01234" },
+            { question: "Find the code: 12345 somewhere in the text", answer: "12345" },
+            { question: "Find the 8-digit code: 12345678 hidden", answer: "12345678" },
+            { question: "Find the 8-digit code: 23456789 somewhere", answer: "23456789" },
+            { question: "Find the 8-digit code: 34567890 in brackets [34567890]", answer: "34567890" },
+            { question: "Find the 8-digit code: hidden in the text 45678901", answer: "45678901" },
         ];
 
         let currentQuestionIndex = 0;
