@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Impossible Quiz</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
     <style>
         body {
             background-color: red;
@@ -38,7 +39,7 @@
             font-size: 3em;
             margin: 20px 0;
             color: red;
-            font-family: 'Digital-7 Mono', monospace;
+            font-family: 'Orbitron', sans-serif;
         }
         .hidden {
             display: none;
@@ -60,10 +61,6 @@
             transform: translate(-50%, -50%);
             font-size: 0.1em;
         }
-        @font-face {
-            font-family: 'Digital-7 Mono';
-            src: url('fonts/digital-7 (mono).ttf') format('truetype');
-        }
     </style>
 </head>
 <body>
@@ -76,21 +73,21 @@
 
     <script>
         const questions = [
-            { question: "Find the code", answer: "12345", hint: "12345" },
-            { question: "Find the code", answer: "23456", hint: "23<span class='hidden'>456</span>56" },
-            { question: "Find the code", answer: "34567", hint: "3<span class='hidden'>4</span>5<span class='hidden'>67</span>" },
-            { question: "Find the code", answer: "45678", hint: "45<span class='hidden'>678</span>" },
-            { question: "Find the code", answer: "56789", hint: "5<span class='hidden'>6789</span>" },
-            { question: "Find the code", answer: "67890", hint: "<span class='hidden'>67890</span>" },
-            { question: "Find the code", answer: "78901", hint: "<span class='hidden'>7</span>89<span class='hidden'>01</span>" },
-            { question: "Find the code", answer: "89012", hint: "<span class='hidden'>8</span>90<span class='hidden'>12</span>" },
-            { question: "Find the code", answer: "90123", hint: "90123" },
-            { question: "Find the code", answer: "01234", hint: "01234" },
-            { question: "Find the code", answer: "12345", hint: "12<span class='hidden'>345</span>" },
-            { question: "Find the 8-digit code", answer: "12345678", hint: "<div class='zoom'>1234<span class='hidden'>5678</span></div>" },
-            { question: "Find the 8-digit code", answer: "23456789", hint: "<div class='zoom'>2345<span class='hidden'>6789</span></div>" },
-            { question: "Find the 8-digit code", answer: "34567890", hint: "<div class='maze-container'><div class='maze-code'>34567890</div></div>" },
-            { question: "Find the 8-digit code", answer: "45678901", hint: "<div class='maze-container'><div class='maze-code'>45678901</div></div>" },
+            { question: "Find the code", answer: "12345", hint: "The code is a simple sequence starting from 1" },
+            { question: "Find the code", answer: "23456", hint: "Starts with 23 and ends with 56, look closer" },
+            { question: "Find the code", answer: "34567", hint: "The middle part is hidden, starts with 3 and ends with 7" },
+            { question: "Find the code", answer: "45678", hint: "Starts with 45, ends with 78, check what's hidden" },
+            { question: "Find the code", answer: "56789", hint: "Starts with 5, ends with 89, middle part is hidden" },
+            { question: "Find the code", answer: "67890", hint: "All digits are hidden, think sequentially" },
+            { question: "Find the code", answer: "78901", hint: "Starts with 7 and ends with 1, middle part hidden" },
+            { question: "Find the code", answer: "89012", hint: "Starts with 8, ends with 12, middle part hidden" },
+            { question: "Find the code", answer: "90123", hint: "Visible code, starts with 9" },
+            { question: "Find the code", answer: "01234", hint: "Visible code, starts with 0" },
+            { question: "Find the code", answer: "12345", hint: "Starts with 12, ends with 5, check hidden part" },
+            { question: "Find the 8-digit code", answer: "12345678", hint: "Starts with 1234, ends with 5678, hidden in zoom" },
+            { question: "Find the 8-digit code", answer: "23456789", hint: "Starts with 2345, ends with 6789, hidden in zoom" },
+            { question: "Find the 8-digit code", answer: "34567890", hint: "Check the maze, starts with 3456, ends with 7890" },
+            { question: "Find the 8-digit code", answer: "45678901", hint: "Check the maze, starts with 4567, ends with 8901" },
         ];
 
         let currentQuestionIndex = 0;
@@ -128,7 +125,6 @@
                 const seconds = timer % 60;
                 timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
                 timer--;
-
                 if (timer < 0) {
                     clearInterval(interval);
                     alert('Time is up! You failed to complete the quiz.');
