@@ -1,14 +1,14 @@
 body {
-    background-color: black;
-    color: green;
+    background-color: #222;
+    color: #0f0;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     animation: blink 10s infinite;
 }
 @keyframes blink {
-    0% { background-color: black; }
-    50% { background-color: darkgreen; }
-    100% { background-color: black; }
+    0% { background-color: #222; }
+    50% { background-color: #444; }
+    100% { background-color: #222; }
 }
 .scene, .quiz-container {
     width: 100vw;
@@ -17,7 +17,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 5px solid green;
+    border: 5px solid #0f0;
     background-color: black;
 }
 .question {
@@ -30,7 +30,7 @@ body {
 .timer {
     font-size: 3em;
     margin: 20px 0;
-    color: green;
+    color: #0f0;
     font-family: 'Orbitron', sans-serif;
 }
 .hidden {
@@ -52,20 +52,4 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 0.1em;
-}
-.stressful {
-    animation: shake 0.5s infinite;
-}
-@keyframes shake {
-    0% { transform: translate(0.5px, 0.5px) rotate(0deg); }
-    10% { transform: translate(-0.5px, -1px) rotate(-0.5deg); }
-    20% { transform: translate(-1.5px, 0px) rotate(0.5deg); }
-    30% { transform: translate(1.5px, 1px) rotate(0deg); }
-    40% { transform: translate(0.5px, -0.5px) rotate(0.5deg); }
-    50% { transform: translate(-0.5px, 1px) rotate(-0.5deg); }
-    60% { transform: translate(-1.5px, 0.5px) rotate(0deg); }
-    70% { transform: translate(1.5px, 0.5px) rotate(-0.5deg); }
-    80% { transform: translate(-0.5px, -0.5px) rotate(0.5deg); }
-    90% { transform: translate(0.5px, 1px) rotate(0deg); }
-    100% { transform: translate(0.5px, -1px) rotate(-0.5deg); }
 }
