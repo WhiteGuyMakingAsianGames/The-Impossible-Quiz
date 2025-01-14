@@ -3,85 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Impossible Quiz</title>
+    <title>The Challenging Quiz</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
-    <style>
-        body {
-            background-color: red;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            animation: panic 10s infinite;
-        }
-        @keyframes panic {
-            0% { background-color: red; }
-            50% { background-color: darkred; }
-            100% { background-color: red; }
-        }
-        .scene, .quiz-container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 5px solid black;
-            background-color: darkred;
-        }
-        .question {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        .answer {
-            margin: 10px 0;
-        }
-        .timer {
-            font-size: 3em;
-            margin: 20px 0;
-            color: red;
-            font-family: 'Orbitron', sans-serif;
-        }
-        .hidden {
-            display: none;
-        }
-        .zoom {
-            transform: scale(3);
-        }
-        .maze-container {
-            position: relative;
-            width: 80%;
-            height: 400px;
-            background: url('maze.png') no-repeat center;
-            background-size: cover;
-        }
-        .maze-code {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 0.1em;
-        }
-        .stressful {
-            animation: shake 0.5s infinite;
-        }
-        @keyframes shake {
-            0% { transform: translate(0.5px, 0.5px) rotate(0deg); }
-            10% { transform: translate(-0.5px, -1px) rotate(-0.5deg); }
-            20% { transform: translate(-1.5px, 0px) rotate(0.5deg); }
-            30% { transform: translate(1.5px, 1px) rotate(0deg); }
-            40% { transform: translate(0.5px, -0.5px) rotate(0.5deg); }
-            50% { transform: translate(-0.5px, 1px) rotate(-0.5deg); }
-            60% { transform: translate(-1.5px, 0.5px) rotate(0deg); }
-            70% { transform: translate(1.5px, 0.5px) rotate(-0.5deg); }
-            80% { transform: translate(-0.5px, -0.5px) rotate(0.5deg); }
-            90% { transform: translate(0.5px, 1px) rotate(0deg); }
-            100% { transform: translate(0.5px, -1px) rotate(-0.5deg); }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="stressful">
     <div class="scene" id="start-scene">
-        <h1>Welcome to The Impossible Quiz</h1>
+        <h1>Welcome to The Challenging Quiz</h1>
         <p>In this quiz, you will need to find and enter a series of codes.</p>
         <p>These codes are your key to uncovering the secrets that lie beyond.</p>
         <button onclick="startQuiz()">Start Quiz</button>
@@ -96,89 +24,11 @@
 
     <div class="scene hidden" id="end-scene">
         <h1>Congratulations!</h1>
-        <p>You have completed The Impossible Quiz.</p>
+        <p>You have completed The Challenging Quiz.</p>
         <p>The codes you entered have unlocked the mysteries and revealed the truth.</p>
         <p>What lies beyond the codes is a world of infinite possibilities.</p>
     </div>
 
-    <script>
-        const questions = [
-            { question: "Find the code", answer: "12345", hint: "Think simple—count from one to five." },
-            { question: "Find the code", answer: "23456", hint: "Starts with 23, ends with 56—middle part is all numbers in order." },
-            { question: "Find the code", answer: "34567", hint: "Begins at 3, finishes at 7—with numbers in sequence in between." },
-            { question: "Find the code", answer: "45678", hint: "Starts with 4 and ends with 78—pay attention to the numbers in the middle." },
-            { question: "Find the code", answer: "56789", hint: "Kicks off with 5 and wraps up with 89, look for the pattern inside." },
-            { question: "Find the code", answer: "67890", hint: "Sequential digits: start at 6, end at 0." },
-            { question: "Find the code", answer: "78901", hint: "Starts with 7, ends with 1—middle is a smooth sequence." },
-            { question: "Find the code", answer: "89012", hint: "Starts at 8 and ends with 12—the middle part completes the sequence." },
-            { question: "Find the code", answer: "90123", hint: "Begins with 9, closes at 23—middle is a series of zeros and ones." },
-            { question: "Find the code", answer: "01234", hint: "Starts at zero, ends at 34—focus on what's in between." },
-            { question: "Find the code", answer: "12345", hint: "Another straightforward one—starts at 12, ends at 45." },
-            { question: "Find the 8-digit code", answer: "12345678", hint: "Starts with 1234, ends with 5678—keep it sequential." },
-            { question: "Find the 8-digit code", answer: "23456789", hint: "Starts with 2345, ends with 6789—sequential numbers all the way." },
-            { question: "Find the 8-digit code", answer: "34567890", hint: "Kicks off with 3456, wraps up with 7890—just follow the sequence." },
-            { question: "Find the 8-digit code", answer: "45678901", hint: "Starts with 4567, ends with 8901—complete the sequence." },
-            { question: "Crack the code", answer: "1234567890", hint: "Imagine a slot machine—align all 10 numbers from 0 to 9. Each digit appears only once."}
-        ];
-
-        let currentQuestionIndex = 0;
-        let timer = 600; // 10 minutes in seconds
-
-        function startQuiz() {
-            document.getElementById('start-scene').classList.add('hidden');
-            document.getElementById('quiz').classList.remove('hidden');
-            showQuestion();
-            startTimer();
-        }
-
-        function showQuestion() {
-            const questionElement = document.getElementById('question');
-            questionElement.innerHTML = questions[currentQuestionIndex].hint;
-        }
-
-        function checkAnswer() {
-            const answerElement = document.getElementById('answer');
-            if (answerElement.value === questions[currentQuestionIndex].answer) {
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    showQuestion();
-                    answerElement.value = '';
-                } else {
-                    endQuiz();
-                }
-            } else {
-                alert('Incorrect, try again.');
-            }
-        }
-
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                checkAnswer();
-            }
-        }
-
-        function startTimer() {
-            const timerElement = document.getElementById('timer');
-            const interval = setInterval(() => {
-                const minutes = Math.floor(timer / 60);
-                const seconds = timer % 60;
-                timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-                timer--;
-                if (timer < 0) {
-                    clearInterval(interval);
-                    alert('Time is up! You failed to complete the quiz.');
-                }
-            }, 1000);
-        }
-
-        function endQuiz() {
-            document.getElementById('quiz').classList.add('hidden');
-            document.getElementById('end-scene').classList.remove('hidden');
-        }
-
-        window.onload = () => {
-            document.getElementById('start-scene').classList.remove('hidden');
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
