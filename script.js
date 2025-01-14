@@ -67,7 +67,7 @@ function playCorrectSound() {
 }
 
 function playBackgroundMusic() {
-    const audio = new Audio('intense-background-music.mp3');
+    const audio = document.getElementById('background-music');
     audio.loop = true;
     audio.play();
 }
